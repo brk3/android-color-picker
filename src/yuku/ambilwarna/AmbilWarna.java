@@ -45,8 +45,8 @@ public class AmbilWarna extends RelativeLayout {
 		viewNewColor.setBackgroundColor(color);
 
 		viewHue.setOnTouchListener(new View.OnTouchListener() {
-			@Override public boolean onTouch(View v, MotionEvent event) {
-                getParent().requestDisallowInterceptTouchEvent(true);
+			@Override 
+            public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_MOVE
 						|| event.getAction() == MotionEvent.ACTION_DOWN
 						|| event.getAction() == MotionEvent.ACTION_UP) {
@@ -69,8 +69,8 @@ public class AmbilWarna extends RelativeLayout {
 			}
 		});
 		viewSatVal.setOnTouchListener(new View.OnTouchListener() {
-			@Override public boolean onTouch(View v, MotionEvent event) {
-                getParent().requestDisallowInterceptTouchEvent(true);
+			@Override 
+            public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_MOVE
 						|| event.getAction() == MotionEvent.ACTION_DOWN
 						|| event.getAction() == MotionEvent.ACTION_UP) {
@@ -127,7 +127,7 @@ public class AmbilWarna extends RelativeLayout {
 		viewTarget.setLayoutParams(layoutParams);
 	}
 
-	private int getColor() {
+    public int getColor() {
 		return Color.HSVToColor(currentColorHsv);
 	}
 
