@@ -1,0 +1,44 @@
+Android Color Picker
+aka AmbilWarna library ("Pick a Color" in Indonesian)
+
+This is a small library for your application to enable the users to select an arbitrary color. It is currently used in the free Bible applications for Android (http://androidbible.blogspot.com). It is also used by the >250,000 downloads app DigiClock Widget.
+
+For example, your application has a feature to customize the color of some background, text, or maybe for a painting application where the user should be able to select different color for painting or filling.
+
+Screenshot:
+http://lh5.ggpht.com/_ODdyLCCXPpQ/TKsFBMSlhdI/AAAAAAAAu6o/vqpGqyCnywY/s800/r230-ambilwarna.png
+
+This is an Android Library Project where you can include it into your main project.
+
+How to use
+Create a color picker dialog by calling the following constructor, and then show it.
+
+AmbilWarnaDialog(Context context, int color, OnAmbilWarnaListener listener)
+as follows:
+
+    // initialColor is the initially-selected color to be shown 
+    // in the rectangle on the left of the arrow.
+    // for example, 0xff000000 is black, 0xff0000ff is blue. 
+    // Please be aware of the initial 0xff which is the alpha.
+    AmbilWarnaDialog dialog = AmbilWarnaDialog(this, initialColor,
+            new OnAmbilWarnaListener() {
+        @Override
+        public void onOk(AmbilWarnaDialog dialog, int color) {
+                // color is the color selected by the user.
+        }
+                
+        @Override
+        public void onCancel(AmbilWarnaDialog dialog) {
+                // cancel was selected by the user
+        }
+    });
+
+    dialog.show();
+
+Contributors
+Pascal Cans (noobs.com)
+
+See also other projects for Android:
+
+Context Menu with Icons
+http://code.google.com/p/android-icon-context-menu/
