@@ -8,6 +8,8 @@ import android.view.*;
 import android.widget.*;
 import android.util.AttributeSet;
 
+import android.util.Log;
+
 public class AmbilWarna extends RelativeLayout {
 
 	final View viewHue;
@@ -19,7 +21,7 @@ public class AmbilWarna extends RelativeLayout {
 	final ViewGroup viewContainer;
 	final float[] currentColorHsv = new float[3];
 
-	public AmbilWarna(final Context context, AttributeSet attrs) {
+	public AmbilWarna(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         int color = 0xFF000000;
@@ -27,10 +29,10 @@ public class AmbilWarna extends RelativeLayout {
         // TODO: make color an attribute
 		Color.colorToHSV(color, currentColorHsv);
 
-        LayoutInflater layoutInflater = 
+        final LayoutInflater layoutInflater = 
                 (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		layoutInflater.inflate(R.layout.ambilwarna_dialog, this, true);
-		viewHue = (ImageView)findViewById(R.id.ambilwarna_viewHue);
+		viewHue = (View)findViewById(R.id.ambilwarna_viewHue);
 		viewSatVal = (AmbilWarnaKotak) findViewById(R.id.ambilwarna_viewSatBri);
 		viewCursor = (ImageView) findViewById(R.id.ambilwarna_cursor);
 		viewOldColor = (View)findViewById(R.id.ambilwarna_warnaLama);
@@ -44,6 +46,7 @@ public class AmbilWarna extends RelativeLayout {
 
 		viewHue.setOnTouchListener(new View.OnTouchListener() {
 			@Override public boolean onTouch(View v, MotionEvent event) {
+                getParent().requestDisallowInterceptTouchEvent(true);
 				if (event.getAction() == MotionEvent.ACTION_MOVE
 						|| event.getAction() == MotionEvent.ACTION_DOWN
 						|| event.getAction() == MotionEvent.ACTION_UP) {
@@ -67,6 +70,7 @@ public class AmbilWarna extends RelativeLayout {
 		});
 		viewSatVal.setOnTouchListener(new View.OnTouchListener() {
 			@Override public boolean onTouch(View v, MotionEvent event) {
+                getParent().requestDisallowInterceptTouchEvent(true);
 				if (event.getAction() == MotionEvent.ACTION_MOVE
 						|| event.getAction() == MotionEvent.ACTION_DOWN
 						|| event.getAction() == MotionEvent.ACTION_UP) {
