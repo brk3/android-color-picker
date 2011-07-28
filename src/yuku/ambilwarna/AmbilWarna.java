@@ -131,6 +131,10 @@ public class AmbilWarna extends RelativeLayout {
 		return Color.HSVToColor(currentColorHsv);
 	}
 
+    public void setOldColor(int color) {
+		viewOldColor.setBackgroundColor(color);
+    }
+
 	private float getHue() {
 		return currentColorHsv[0];
 	}
